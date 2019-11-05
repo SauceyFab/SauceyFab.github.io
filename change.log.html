@@ -1,15 +1,22 @@
 <html>
 <head>
 <script language="javascript">
-var randNumber = Math.ceil(Math.random()*10);
-var input = window.prompt("Choose a number from 1 - 10");
-alert(randNumber);
-if (input == randNumber) {
-    alert('You guessed correctly!')
+    var randNumber = Math.ceil(Math.random()*100);
+alert("The random number is "+ randNumber);
+var input = window.prompt("Choose a number from 1 - 10");;
+alert("You guessed "+ input )
+if (Number.isInteger(input)) {
+    if( input == randNumber) {
+        alert(input +' = ' + randNumber+ " : Lucky Guess: You Got It!!")
+}   else {
+        alert(input + ' != ' + randNumber + ': Trashh! You suck at guessing.'
+} 
 } else {
-    alert('You guessed incorrectly...')
+    console.log('Wait!! Are you retarded? This is not a number')
 }
+
 </script>
 <body>
+    
 </body>
 </html>
