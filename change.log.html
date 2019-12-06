@@ -1,43 +1,122 @@
 <html>
 <head>
-<style>
-body{
-	background-image: url("https://as2.ftcdn.net/jpg/00/76/07/65/500_F_76076569_eEsgUUu3H6RspSs1Xi9NNvJ2ubHFOM4t.jpg");
-        background-repeat:no-repeat;
-       background-size:cover;
-}
-</style>
-<script language="javascript">
-function myFunction() {
-input= document.getElementById("mySubmit").value
-var randNumber = Math.ceil(Math.random()*10);
-var integer = parseInt(input, 10);
-if (Number.isInteger(integer)) {
-	document.getElementById("__").innerHTML = 'The random number is '+randNumber ;
-    if( input == randNumber) {
-		document.getElementById("_").innerHTML = input+' = '+randNumber+" : Lucky Guess: You Got It!!";
-}   else {
-        document.getElementById("_").innerHTML = input +' != ' +randNumber +': Trashh! You suck at guessing.'
-} 
-} else {
-    document.getElementById("_").innerHTML ='Wait!!Are you retarded?This is not a number!'
-} 
-}
-</script>
+    <title>Add Image to Canvas Using image() Object</title>
 </head>
 <body>
-<DIV style="position:absolute; TOP:35px; LEFT:510px"><font size ="6" color="skyblue4">GUESSING GAME</font></DIV>
-<IMG STYLE="position:absolute; BOTTOM:35px; LEFT:380px; WIDTH:500px; HEIGHT:100px" 
-	<img src="https://mathjokes4mathyfolks.files.wordpress.com/2015/01/dilbert_accurate_numbers.gif">
-</IMG>
-<IMG style="position:absolute; TOP:150px; LEFT:420px; WIDTH:460px; HEIGHT:200px" 
-	<img src="https://www.publicdomainpictures.net/pictures/30000/velka/plain-white-background.jpg" alt=''/>
-<DIV class="centered"style= "position: absolute; TOP:200px; LEFT:510px">
-Choose Number 1-10:<br><input type="text" id="mySubmit" value="" maxlength="2" />
-<br />
-<button onclick="myFunction()">Submit</button>
-<p id = "__"</p>
-<p id = "_"</p></DIV>
-</IMG>
+<canvas id="myCanvas" width= "1000" height= "1000">
+Your browser does not support the canvas element.
+</canvas>
 </body>
+
+<script>
+window.onload = function () {
+
+    // GET THE IMAGE.
+    var img = new Image();
+    img.src = 'https://img.freepik.com/free-photo/cement-street-financial-downtown-shanghai-travel_1417-886.jpg?size=626&ext=jpg';
+
+    // WAIT TILL IMAGE IS LOADED.
+    img.onload = function () {
+    fill_canvas(img);       // FILL THE CANVAS WITH THE IMAGE.
+
+
+    function fill_canvas(img) {
+    // CREATE CANVAS CONTEXT.
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+
+    ctx.drawImage(img,0,0,canvas.height,canvas.width);       // DRAW THE IMAGE TO THE CANVAS.
+    }
+
+    function roundedRect(ctx, x, y, width, height, radius) {
+        ctx.beginPath();
+        ctx.moveTo(x, y + radius);
+        ctx.lineTo(x, y + height - radius);
+        ctx.arcTo(x, y + height, x + radius, y + height, radius);
+        ctx.lineTo(x + width - radius, y + height);
+        ctx.arcTo(x + width, y + height, x + width, y + height-radius, radius);
+        ctx.lineTo(x + width, y + radius);
+        ctx.arcTo(x + width, y, x + width - radius, y, radius);
+        ctx.lineTo(x + radius, y);
+        ctx.arcTo(x, y, x, y + radius, radius);
+        ctx.stroke();
+        }
+
+    //head 
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    var face = new Path2D();
+    ctx.fillStyle= "grey";
+    roundedRect(ctx,335, 100, 300, 100, 15); 
+    ctx.fill();
+
+    //left eye
+    var circle = new Path2D();
+    circle.moveTo(125, 35);
+    circle.arc(410, 150, 35, 0, 2 * Math.PI);
+    //right eye
+    var round= new Path2D();
+    round.moveTo(125, 35);
+    round.arc(560, 150, 35, 0, 2 * Math.PI);
+    ctx.fillStyle= "black";
+    ctx.fill(round);
+    ctx.fill(circle);
+    //neck
+    var neck = new Path2D();
+    ctx.fillStyle= "GoldenRod"
+    neck.rect(460, 200, 50, 100);
+    ctx.fill(neck);
+    //body
+    var body = new Path2D();
+    ctx.fillStyle= "GoldenRod";
+    body.rect(250, 300, 475, 375);
+    ctx.fill(body);
+    //left leg
+    var leftleg = new Path2D();
+    ctx.fillStyle= "DarkSlateGray"
+    leftleg.rect(100, 525, 150, 275);
+    ctx.fill(leftleg);
+    //right leg
+    var rightleg = new Path2D();
+    ctx.fillStyle= "DarkSlateGray"
+    rightleg.rect(725, 525, 150, 275);
+    ctx.fill(rightleg);
+    //left arm
+    var leftarm = new Path2D();
+    ctx.fillStyle = "grey"
+    leftarm.rect(250, 400, 200, 50);
+    ctx.fill(leftarm);
+    //leftArm fingers
+    var leftfingers = new Path2D();
+    ctx.fillStyle = "DimGray"
+    leftfingers.rect(450, 387.5, 50, 25);
+    leftfingers.rect(450, 437.5, 50, 25);
+    ctx.fill(leftfingers);
+    //right arm
+    var rightarm = new Path2D();
+    ctx.fillStyle = "grey"
+    rightarm.rect(525, 400, 200, 50);
+    ctx.fill(rightarm);
+    //rightArm fingers
+    var rightfingers= new Path2D();
+    ctx.fillStyle = "DimGray"
+    rightfingers.rect(475, 387.5, 50, 25);
+    rightfingers.rect(475, 437.5, 50, 25);
+    ctx.fill(rightfingers);
+    //middle finger1
+    var middle1 = new Path2D();
+    ctx.fillStyle = "DimGray"
+    middle1.rect(475, 400, 50, 25);
+    ctx.fill(middle1);
+    //middle finger2
+    var middle2 = new Path2D();
+    ctx.fillStyle = "DimGray"
+    middle2.rect(450, 412.5, 50, 25); 
+    ctx.fill(middle2);
+    ctx.font = "50px Arial";
+    ctx.fillText("W A L L - E", 425, 650);
+    }
+}
+
+</script>
 </html>
