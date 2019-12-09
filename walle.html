@@ -1,0 +1,100 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <style>
+        body {
+        background-color: #FFF;
+        margin: 30px;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        }
+        #contentContainer {
+        width: 550px;
+        height: 350px;
+        border: 5px black solid;
+        overflow: hidden;
+        background-image: url("https://img.freepik.com/free-photo/top-view-asphalt-road_51195-810.jpg?size=626&ext=jpg");
+        background-repeat:no-repeat;
+        background-size: 600px 350px;
+        display: flex;
+        align-items: center;
+          }
+      
+        #circle {
+        width: 300px;
+        height: 300px;
+        background-image: url("C:/Users/Fabian/Downloads/python/index.html/truewalle.png");
+        background-repeat: no-repeat;
+        background-size: 175px 200px;
+        }
+        #move {
+      background-color: gold;
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border: 5px solid #333;
+      outline: none;
+    }
+    #move:hover {
+      background-color: coral;
+    }
+    #move:active {
+      background-color: yellowgreen;
+    }
+    img{
+    position: absolute;
+    top: 80px;
+    left: 0px;
+    width: 300px;
+    height: 300px;
+        background-image :url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3scOfudh3tWsqsX_2McUAs3qEU6-MnB7lvUcTOL-sxIzOQ91yFg&s");
+        background-repeat: no-repeat
+    }
+        
+
+    </style>
+    </head>
+      
+    <body>
+            <p style="font-size:50px;color:violet;">Animaing In Code!</p>
+    <div id="contentContainer">
+        <div id="circle"></div>
+    </div>
+    <input id="move" type="button" value="move"></input> 
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3scOfudh3tWsqsX_2McUAs3qEU6-MnB7lvUcTOL-sxIzOQ91yFg&s" id= "minecrft" type="image" top ="0px"></img>
+    <script>
+    var button = document.querySelector("#move");
+    button.addEventListener("click", animate, false);
+    var circle = document.querySelector("#circle");
+
+var xPos = 0;
+var yPos = 0;
+var angle = 0;
+
+function animate() {
+  xPos += 8;
+  angle += .1;
+  
+  yPos = Math.round(50 * Math.sin(angle));
+
+  circle.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+
+  if (Math.abs(xPos) >= 900) {
+    xPos = -500;
+  }
+
+  if (angle > 2 * Math.PI) {
+    angle = 0;
+  }
+
+  requestAnimationFrame(animate);
+}
+
+</script>
+</body>
+      
+</html>
